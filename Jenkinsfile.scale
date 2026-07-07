@@ -10,14 +10,13 @@ pipeline {
 
         stage('Point kubectl to Minikube') {
             steps {
-                sh 'kubectl config use-context minikube'
+                bat 'kubectl config use-context minikube'
             }
         }
 
         stage('Scale Pod Resources') {
             steps {
-                sh 'chmod +x scripts/scale-resources.sh'
-                sh './scripts/scale-resource.sh'
+                bat './scripts/scale-resource.sh'
             }
         }
     }
