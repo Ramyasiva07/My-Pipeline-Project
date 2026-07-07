@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Point kubectl to Minikube') {
+            steps {
+                sh 'kubectl config use-context minikube'
+            }
+        }
+
+        stage('Scale Pod Resources') {
+            steps {
+                sh 'chmod +x scripts/scale-resources.sh'
+                sh './scripts/scale-resources.sh'
+            }
+        }
+    }
+}
