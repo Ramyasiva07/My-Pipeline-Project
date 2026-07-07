@@ -9,12 +9,10 @@ echo "=== Step 1: Get current deployed version ==="
 CURRENT_TAG=$(helm get values "$RELEASE_NAME" -n "$NAMESPACE" -o json | grep -o '"tag": *"[^"]*"' | sed 's/.*"tag": *"\(.*\)"/\1/')
 echo "Current NGINX version deployed: $CURRENT_TAG"
 
-echo "=== Step 2: Calculate next version ==="
-# splits 1.25.3 into 1.25 and 3, bumps patch number: 3 -> 4
-MAJOR_MINOR=$(echo "$CURRENT_TAG" | cut -d. -f1,2)
-PATCH=$(echo "$CURRENT_TAG" | cut -d. -f3)
-NEW_PATCH=$((PATCH + 1))
-NEW_TAG="$MAJOR_MINOR.$NEW_PATCH"
+echo "=== Step 2: Set the new version ==="
+
+NEW_TAG="1.23.1"
+
 echo "New NGINX version to deploy: $NEW_TAG"
 
 echo "=== Step 3: Upgrade Helm release to new version ==="
