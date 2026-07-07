@@ -3,7 +3,7 @@ set -e
 
 RELEASE="my-nginx"
 NAMESPACE="default"
-CHART="./mychart"
+CHART="./my-nginx"
 
 echo "=========================================="
 echo " PRECHECK: Current pod resources (BEFORE)"
