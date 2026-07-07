@@ -10,7 +10,7 @@ echo "Current NGINX version deployed: $CURRENT_TAG"
 
 echo "=== Step 2: Set the new version ==="
 
-NEW_TAG="1.27.1"
+NEW_TAG="1.27.6"
 
 echo "New NGINX version to deploy: $NEW_TAG"
 
