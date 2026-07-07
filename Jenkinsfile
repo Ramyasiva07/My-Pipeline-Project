@@ -10,22 +10,22 @@ pipeline {
 
         stage('Point kubectl to Minikube') {
             steps {
-                sh 'kubectl config use-context minikube'
+                bat 'kubectl config use-context minikube'
             }
         }
 
         stage('Call Script to Update NGINX Version') {
             steps {
-                sh 'chmod +x update-version.sh'
-                sh './update-version.sh'
+                bat 'chmod +x update-version.sh'
+                bat './update-version.sh'
             }
         }
 
         stage('Verify Update') {
             steps {
-                sh 'helm list -n default'
-                sh 'helm get values my-nginx -n default'
-                sh 'kubectl get pods -n default -o wide'
+                bat 'helm list -n default'
+                bat 'helm get values my-nginx -n default'
+                bat 'kubectl get pods -n default -o wide'
             }
         }
     }
