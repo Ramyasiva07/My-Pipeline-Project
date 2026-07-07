@@ -3,7 +3,7 @@ set -e
 
 RELEASE_NAME="my-nginx"
 NAMESPACE="default"
-CHART="bitnami/nginx"
+CHART="./my-nginx"
 
 echo "=== Step 1: Get current deployed version ==="
 CURRENT_TAG=$(helm get values "$RELEASE_NAME" -n "$NAMESPACE" -o json | grep -o '"tag": *"[^"]*"' | sed 's/.*"tag": *"\(.*\)"/\1/')
