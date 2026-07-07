@@ -16,7 +16,7 @@ pipeline {
 
         stage('Scale Pod Resources') {
             steps {
-                bat 'bash scripts/scale-resource.sh'
+                bat '"C:\\Program Files\\Git\\bin\\bash.exe" scripts/scale-resource.sh'
             }
         }
     }
