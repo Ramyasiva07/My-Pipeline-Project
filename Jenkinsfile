@@ -16,8 +16,7 @@ pipeline {
 
         stage('Call Script to Update NGINX Version') {
             steps {
-                bat 'chmod +x update-version.sh'
-                bat './update-version.sh'
+                               bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "./Update-Version.sh"'
             }
         }
 
