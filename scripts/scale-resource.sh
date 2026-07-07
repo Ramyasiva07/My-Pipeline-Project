@@ -9,7 +9,7 @@ echo "=========================================="
 echo " PRECHECK: Current pod resources (BEFORE)"
 echo "=========================================="
 
-POD=$(kubectl get pods -n "$NAMESPACE" -l app="$RELEASE" -o jsonpath='{.items[0].metadata.name}')
+POD=$(kubectl get pods -n "$NAMESPACE" -l app.kubernetes.io/instance="$RELEASE" -o jsonpath='{.items[0].metadata.name}')
 echo "Pod name: $POD"
 
 OLD_CPU_REQ=$(kubectl get pod "$POD" -n "$NAMESPACE" -o jsonpath='{.spec.containers[0].resources.requests.cpu}')
