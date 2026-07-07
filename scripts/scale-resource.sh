@@ -58,7 +58,7 @@ echo "=========================================="
 echo " POSTCHECK: Confirming new pod resources (AFTER)"
 echo "=========================================="
 
-NEW_POD=$(kubectl get pods -n "$NAMESPACE" -l app="$RELEASE" -o jsonpath='{.items[0].metadata.name}')
+NEW_POD=$(kubectl get pods -n "$NAMESPACE" -l app.kubernetes.io/instance="$RELEASE" -o jsonpath='{.items[0].metadata.name}')
 echo "New pod name: $NEW_POD"
 
 FINAL_CPU_REQ=$(kubectl get pod "$NEW_POD" -n "$NAMESPACE" -o jsonpath='{.spec.containers[0].resources.requests.cpu}')
