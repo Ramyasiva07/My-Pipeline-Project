@@ -5,13 +5,12 @@ RELEASE_NAME="my-nginx"
 NAMESPACE="default"
 CHART="./my-nginx"
 
-echo "=== Step 1: Get current deployed version ==="
-CURRENT_TAG=$(helm get values "$RELEASE_NAME" -n "$NAMESPACE" -o json | grep -o '"tag": *"[^"]*"' | sed 's/.*"tag": *"\(.*\)"/\1/')
+CURRENT_TAG=$(kubectl get deployment "$RELEASE_NAME" -n "$NAMESPACE" -o jsonpath="{.spec.template.spec.containers[0].image}" | cut -d':' -f2)
 echo "Current NGINX version deployed: $CURRENT_TAG"
 
 echo "=== Step 2: Set the new version ==="
 
-NEW_TAG="1.23.1"
+NEW_TAG="1.31.2"
 
 echo "New NGINX version to deploy: $NEW_TAG"
 
